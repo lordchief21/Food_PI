@@ -2,7 +2,9 @@ const {Diet, Recipe} = require('../db');
 const API = require('../API_JSON/API_JSON')
 const axios = require('axios');
 
-
+const {
+  API_KEY
+} = process.env;
 
 let apiArr = API.results;
 
@@ -10,9 +12,9 @@ let apiArr = API.results;
 
 const getRecipesApi = async () => {
     let recetas = apiArr;
-    // const url ='https://api.spoonacular.com/recipes/complexSearch?apiKey=aa8c67c7841e46c6bb383427620c4362&number=100&addRecipeInformation=true'
-    // let getRecipe = (await axios(url)).data.results
-    let recetasMap= recetas.map((receta) => ({
+    const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
+    let getRecipe = (await axios(url)).data.results
+    let recetasMap= getRecipe.map((receta) => ({
       id: receta.id,
       name: receta.title,
       plate_resume: receta.summary,

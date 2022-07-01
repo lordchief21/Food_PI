@@ -13,8 +13,8 @@ const getDiet = async () => {
 
     try {
         // Descomentaremos esta cuando ya tengamos la lógica final para proceder con los request ( 150 request por día)
-        const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
-        let getDiet = (await axios(url)).data.results
+        // const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
+        // let getDiet = (await axios(url)).data.results
 
         let apiArr = API.results;
 
@@ -23,7 +23,7 @@ const getDiet = async () => {
         
         //Seteamos para usarlo al momento de 
         let dietArr = [];
-        let dietMap = getDiet.map((el) => {
+        let dietMap = apiArr.map((el) => {
             let diet = el.diets;
             let dietSplitted = diet;
             dietArr.push(dietSplitted)

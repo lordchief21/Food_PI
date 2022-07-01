@@ -12,16 +12,16 @@ let apiArr = API.results;
 
 const getRecipesApi = async () => {
     let recetas = apiArr;
-    const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
-    let getRecipe = (await axios(url)).data.results
-    let recetasMap= getRecipe.map((receta) => ({
+    // const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
+    // let getRecipe = (await axios(url)).data.results
+    let recetasMap= recetas.map((receta) => ({
       id: receta.id,
       name: receta.title,
-      plate_resume: receta.summary,
+      plate_resume: receta.summary.replace( /(<([^>]+)>)/ig, ''),
       health_score: receta.healthScore,
       image:receta.image,
       step_by_step:(receta.analyzedInstructions[0]&&receta.analyzedInstructions[0].steps?receta.analyzedInstructions[0].steps.map(s => s.step).join(" \n"):''),
-      diets: receta.diets
+      diets: receta.diets.map(el => ({name: el}))
     }))
     
     return recetasMap;

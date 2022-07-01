@@ -1,0 +1,89 @@
+import {React} from 'react';
+import FoodCard from '../Card/FoodCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import {getFood} from '../../Redux/action/index';
+import Pagination from '../Pagination/Pagination';
+import NavBar from '../NavBar/NavBar';
+import CardList from '../CardList/CardList'
+
+
+
+
+
+export default function Home() {
+  
+  const dispatch = useDispatch();
+  const allFood = useSelector((state) => state.food);
+  
+
+  const foodNumber = 9
+  
+  //Renderizadores de estados
+   const [currPage, setCurrPage] = useState(1);
+   const [foodPerPage, setFoodPerPAge] = useState(foodNumber);
+   
+
+   
+  
+   //Lógica de paginado
+  const indexOfLastFood = currPage * foodPerPage;                //Generamos dos index para ubicarnos en el slice
+  const indexOfFirstFood = indexOfLastFood - foodPerPage;
+  const foodCurr =  allFood?.slice(indexOfFirstFood, indexOfLastFood);
+  
+
+ //Los useEffect
+
+
+  useEffect(() => {
+    dispatch(getFood());
+  }, [dispatch]);
+
+
+  
+
+   //Lógica de paginado
+
+  const paginate = (numberOfPage) => {
+    setCurrPage(numberOfPage)
+  }
+  
+
+
+
+            //Handlers
+
+  function handleClick(e){
+    e.preventDefault();
+    dispatch(getFood())
+  }
+
+
+
+  //Código
+
+  return (
+    <div>
+      <h1>ESTO ES UNA PRUEBA DE FOOD</h1>
+      <button onClick={e => {handleClick(e)}}>NO ME ROMPAS PLIS!!</button>
+
+
+      <NavBar setCurrPage = {setCurrPage}/>
+
+      
+      <Pagination 
+      foodPerPage ={foodPerPage}
+      allFood = {allFood?.length}
+      paginate = {paginate} 
+      onChange ={t => {console.log(t.target.value)}}
+      />
+     
+
+     <CardList foodCurr ={foodCurr} />
+      
+  
+
+      
+    </div>
+  );
+}

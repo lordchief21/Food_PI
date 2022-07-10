@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    justify-content:space-between;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 400px;
+   
+}
+
+.number {
+    
+    width: 80px;
+    margin-left: 5px;
+    background: white;
+    font-size: x-large;
+}

@@ -14,7 +14,7 @@ router.get("", async (req, res) => {
 
         if(foodQuery) {
             let foodResult = getInfoApi.filter(el => el.name.toLowerCase().includes(foodQuery.toLowerCase()))
-            foodResult.length ? res.status(200).send(foodResult): res.status(404).send("No tengo la receta que buscas :(");
+            foodResult.length ? res.status(200).send(foodResult): res.status(400).send("No tengo la receta que buscas");
         }else res.status(200).send(getInfoApi)
     
     } catch (error) {

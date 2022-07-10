@@ -6,7 +6,11 @@ export const FILTER_BY_DIET = 'FILTER_BY_DIET';
 export const FILTER_ASC_DESC ='FILTER_ASC_DESC';
 export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
 export const GET_DETAIL = 'GET_DETAIL';
-export const POST_FOOD ='POST_FOOD'
+export const POST_FOOD ='POST_FOOD';
+export const SEARCH_BY_NAME ='SEARCH_BY_NAME';
+export const UMOUNT_FOOD_DETAIL = "UMOUNT_FOOD_DETAIL";
+export const FILTER_BY_HEALTH_SCORE = "FILTER_BY_HEALTH_SCORE";
+export const MAYOR_98= "MAYOR_98";
 
 
 // LLamadas a las rutas de mi servidor
@@ -47,18 +51,15 @@ export function getFoodDetail(id) {
 };
 
 
-export function newRecipe(recipeNew) {
-    return async function (dispatch) {
-        try {
+export async function newRecipe(recipeNew) {
+  
+    try {
         const res = await axios.post("http://localhost:3001/recipe/create", recipeNew);
-        dispatch({
-            type: POST_FOOD , 
-            payload: res.data}, 
-            alert("fOOD CREATED"));
-        } catch (err) {
+        alert("fOOD CREATED");
+    } catch (err) {
         alert("ERROR Could not create a Recipe");
-        }
-  }; 
+    }
+  
 
 };
 
@@ -91,6 +92,45 @@ export function filteredByOrigin(payload){
     }
 }
 
+export function filteredByHealthScore(payload){
+    
+    return {
+        type: FILTER_BY_HEALTH_SCORE,
+        payload: payload
+    }
+}
+
+export function filterByCincuenta(payload) {
+    return {
+        type:MAYOR_98,
+        payload: payload
+    }
+}
+
+export  function getFoodByName (foodName) {
+    return async (dispatch) => {
+            
+            var nameFood = (await axios.get(`http://localhost:3001/recipe?name=${foodName}`,{
+                validateStatus: (status) => status })).data;
+            console.log("flag status", nameFood )
+            return dispatch ({
+                type: SEARCH_BY_NAME,
+                payload: nameFood
+            })
+
+       
+    }
+}
+
+
+
+// AUXILIAR PARA EL DETAIL
+
+export const umountFood=()=>{
+    return({
+        type: UMOUNT_FOOD_DETAIL
+    })    
+}
 
 
 

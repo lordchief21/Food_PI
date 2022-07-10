@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Fjalla+One&family=Pacifico&display=swap');
+
+
+
+
+.container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 800px;
+    background: rgb(226,226,236);
+background: linear-gradient(207deg, rgba(226,226,236,0.8578781854538691) 0%, rgba(254,254,254,0.6898109585631127) 0%, rgba(243,243,255,1) 1%, rgba(160,255,184,0.92186610972514) 5%, rgba(57,238,80,1) 18%, rgba(13,187,27,0.9582806755514706) 37%, rgba(31,185,20,1) 56%, rgba(4,227,0,0.7762078464198179) 100%, rgba(255,236,236,1) 100%);
+    
+}
+
+.containerBar {
+    border: 2px solid black;
+    width: 100%;
+    background: rgba(255, 255, 255,0.5);
+    display: flex;
+    justify-content: space-between;
+}
+
+.imgBar {
+   
+    height: 150px;
+    width: auto;
+    margin: 0;
+    border-radius: 50%;
+
+}
+
+.containerBar div {
+    align-self: center;
+}
+
+.containerBar h2 {
+    align-self: center;
+    font-family: 'Carter One', cursive;
+    font-size: 40px;
+}
+
+
+.containerForm {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 550px;
+    align-items: center;
+    border: 2px solid blue;
+    justify-content: space-around;
+
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.3);
+    border-radius: 5%;
+    box-shadow: 8px 8px 25px rgba(191, 255, 142, 0.08);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 300ms;
+}
+
+.containerInput {
+    display: flex;
+    width: calc(800px *.50);
+    height: calc(550px * .50);
+    flex-direction: column;
+    border: 2px solid red;
+}
+
+
+

@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  
+  
 }
 
 .App-logo {
@@ -28,6 +30,18 @@
   color: #61dafb;
 }
 
+
+.video {
+ 
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    object-fit: cover; 
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +50,6 @@
     transform: rotate(360deg);
   }
 }
+
+
+

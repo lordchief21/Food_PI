@@ -6,6 +6,8 @@ import {getFood} from '../../Redux/action/index';
 import Pagination from '../Pagination/Pagination';
 import NavBar from '../NavBar/NavBar';
 import CardList from '../CardList/CardList'
+import styles from './Home.module.css'
+import bgVideo from '../LandingPage/Assets/Video/background.mp4'
 
 
 
@@ -56,6 +58,7 @@ export default function Home() {
   function handleClick(e){
     e.preventDefault();
     dispatch(getFood())
+    setCurrPage(1)
   }
 
 
@@ -63,12 +66,12 @@ export default function Home() {
   //Código
 
   return (
-    <div>
-      <h1>ESTO ES UNA PRUEBA DE FOOD</h1>
-      <button onClick={e => {handleClick(e)}}>NO ME ROMPAS PLIS!!</button>
+    <div className={styles.container}>
+      {/* <h1>ESTO ES UNA PRUEBA DE FOOD</h1>
+      <button onClick={e => {handleClick(e)}}>NO ME ROMPAS PLIS!!</button> */}
 
 
-      <NavBar setCurrPage = {setCurrPage}/>
+      <NavBar className={styles.NavBar} setCurrPage = {setCurrPage}/>
 
       
       <Pagination 
@@ -81,8 +84,6 @@ export default function Home() {
 
      <CardList foodCurr ={foodCurr} />
       
-  
-
       
     </div>
   );

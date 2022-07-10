@@ -14,7 +14,7 @@ const getRecipesApi = async () => {
     let recetas = apiArr;
     // const url =`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
     // let getRecipe = (await axios(url)).data.results
-    let recetasMap= recetas.map((receta) => ({
+    let recetasMap= apiArr.map((receta) => ({
       id: receta.id,
       name: receta.title,
       plate_resume: receta.summary.replace( /(<([^>]+)>)/ig, ''),
@@ -67,7 +67,8 @@ const getRecipesApi = async () => {
             plate_resume,
             health_score,
             image,
-            step_by_step
+            step_by_step,
+            createdInDb: true
 
         })
 
@@ -82,7 +83,7 @@ const getRecipesApi = async () => {
 
         res.status(200).send("Recipe Creado")
     } catch (error) {
-        console.log(error)
+        res.status(404).send("Error de Data")
     }
     
   }

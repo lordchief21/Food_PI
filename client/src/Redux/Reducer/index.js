@@ -1,4 +1,4 @@
-import { GET_FOOD, GET_DIET, FILTER_BY_DIET,FILTER_ASC_DESC,FILTER_BY_ORIGIN, GET_DETAIL } from "../action";
+import { GET_FOOD, GET_DIET, FILTER_BY_DIET,FILTER_ASC_DESC,FILTER_BY_ORIGIN, GET_DETAIL,SEARCH_BY_NAME,UMOUNT_FOOD_DETAIL ,FILTER_BY_HEALTH_SCORE, MAYOR_98} from "../action";
 
 
 const initialState = {
@@ -31,6 +31,12 @@ export default function rootReducer(state= initialState, action) {
                 ...state,
                 foodDetail: action.payload
             }
+        
+        case UMOUNT_FOOD_DETAIL:
+            return {
+                ...state,
+                foodDetail: [],
+            };    
 
         case FILTER_BY_DIET:
             
@@ -48,31 +54,41 @@ export default function rootReducer(state= initialState, action) {
 
         case FILTER_ASC_DESC:
             const allFoodSort = [...state.food];
+            const allFoodSup = [...state.foodSup]
 
             if (action.payload === 'AtoZ') {
-                allFoodSort.sort( (s , d) =>  { 
+                const res = allFoodSort.sort( (s , d) =>  { 
                     if(s.name > d.name){ 
                         return 1
                     }else {
                         return -1}
                     })
+
+                return {
+                    ...state,
+                    food: res,
+                }
+                
             } else if (action.payload === 'ZotA') {
-                allFoodSort.sort((s, d) => {
+                const res = allFoodSort.sort((s, d) => {
                     if (s.name < d.name) {
                         return 1
                     }else{
                         return -1
-                    }
-                })
+                    }})
+                return {
+                    ...state,
+                    food: res,  
+                }
+            } else {
+                const res = allFoodSup
+                return {
+                    ...state,
+                    food: res,
+                }
             }
            
-            console.log(allFoodSort)
-                
-            return {
-                ...state,
-                food: allFoodSort,
-            }
-        
+
         case FILTER_BY_ORIGIN:
             const allFoodOrigin = state.foodSup
                 
@@ -84,7 +100,76 @@ export default function rootReducer(state= initialState, action) {
                 ...state,
                 food: filterByOrigin
              };
-    
+
+        case FILTER_BY_HEALTH_SCORE:
+            const foodForHealth = [...state.food] 
+            const foodForHealthForCopy = [...state.foodSup] 
+
+             const health = foodForHealth?.filter(el => el.health_score == action.payload)
+
+             console.log("flag filter Health ", action.payload)
+
+            if(health.length > 0) {
+                return {
+                    ...state,
+                    food: health
+                }
+
+            } else {
+                return {
+                    ...state,
+                    food: foodForHealthForCopy
+                }
+            }
+             
+          
+
+
+        case SEARCH_BY_NAME:
+
+            const searchName = [...state.foodSup]
+            console.log("flag actionPayload", action.payload )
+             const response = action.payload
+             console.log("flag response", typeof response )
+            
+
+
+
+            if(response !== "No tengo la receta que buscas") {
+                const resFinal = response
+                console.log("flag response if", resFinal )
+                return {
+                    ...state,
+                    food: resFinal
+                }
+            } else{
+                const resFinal = searchName
+                console.log("flag response else", resFinal )
+                
+                alert("No existe la receta :( !")
+                
+                return {
+                    ...state,
+                    food: resFinal
+                }
+            }
+        
+            case MAYOR_98:
+                
+            const res = [...state.food]
+
+            const info = action.payload
+
+           console.log("Flag Mayor: ", info)
+
+           const mayor = res.filter(el => el.health_score >= 98)
+
+           return {
+            ...state,
+            food: mayor
+           }
+
+        
         default: return{
             state
         }

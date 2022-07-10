@@ -1,0 +1,87 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Fjalla+One&family=Pacifico&display=swap');
+
+
+.foodContainer {
+    display: flex;
+    border: 2px solid rgba(255,255,255,0.2) ;
+    justify-content: space-between;
+    flex-direction: column;
+    background: rgba(255,255,255,0.3);
+    border-radius: 5%;
+    box-shadow: 8px 8px 25px rgba(191, 255, 142, 0.08);
+    height: 550px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 300ms;
+    font-family: 'Carter One', cursive;
+    color: white
+
+}
+
+
+.foodScoreContainer {
+    position:relative;
+    width: 100px;
+    text-align: center;
+    filter: url(#fireScore);
+    border: 2px solid aqua
+
+}
+
+.foodScore {
+    
+    position: relative;
+    top: 20px;
+    font-size: 1.5em;
+    color: rgb(228, 158, 16);
+    -webkit-box-reflect: below -10px linear-gradient(transparent, #0008 );
+    text-shadow: 0 0 10px rgb(228, 158, 16),
+                    0 0 40px rgb(235, 10, 10),
+                    0 0 80px rgb(228, 158, 16),
+                    0 0 160px rgb(228, 158, 16),
+                    0 0 240px rgb(228, 158, 16) ;
+    
+}
+
+
+.foodImage {
+    border-radius: 3%;
+    max-height: 100%;
+    width: 100%;
+    height: auto;
+}
+
+.containerDiet{
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    border: 2px solid blue ;
+    margin-bottom: 25px;
+    
+    
+}
+
+
+.containerDiet h4 {
+    margin-top: 45px;
+}
+
+
+.diets {
+    
+    list-style: none;
+
+    gap: 4px;
+}
+
+
+/* Hovers y demás*/
+
+
+.foodContainer:hover {
+    transform: translateY(-10px);
+    box-shadow: 8px 8px 25px rgba(191, 255, 142, 0.5);
+}
+

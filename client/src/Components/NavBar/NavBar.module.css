@@ -1,0 +1,35 @@
+
+
+.container {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+
+}
+
+.imgBar {
+   
+    height: 100px;
+    width: auto;
+    margin: 0;
+    border-radius: 50%;
+
+}
+
+.containerInfo {
+    display: flex;
+    justify-content: space-between;
+}  
+    
+
+
+.containerFilter {
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}

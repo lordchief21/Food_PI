@@ -12,8 +12,8 @@ export default function LandingPage() {
                 </video>
                 
                 <div className={styles.bgText}>
-                    <img src={Logo} alt="AllFood" srcset="" className={styles.imageLogo}/>
-                    <input type="text" placeholder="Introduzca su nombre" className={styles.input} />
+                    <img src={Logo} alt="AllFood"  className={styles.imageLogo}/>
+                  
                     <Link to='/home'>Comencemos</Link>
                     
                 </div> 
